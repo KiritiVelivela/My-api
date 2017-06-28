@@ -1,5 +1,4 @@
 class CustomersController < ApplicationController
-  respond_to? :json
 
   def blacklist
     #puts params[:order].vwervwevwwevw

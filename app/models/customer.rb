@@ -11,7 +11,7 @@ class Customer < ApplicationRecord
 
 
   def avatar_url
-    "http://10.0.2.2:3000"+ "#{avatar.url}"
+    "http://10.0.2.2:3000"+"#{avatar.url}"
   end
 
 
