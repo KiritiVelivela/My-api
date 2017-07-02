@@ -4,14 +4,18 @@ Rails.application.routes.draw do
   post 'auth/login', to: 'authentication#authenticate'
   post 'signup', to: 'users#create'
   post 'customers/blacklist'
-  get 'emotions/index'
+  get 'emotions/pd'
   get 'customers/four'
-  resources :customers do
+  post 'emotions/index'
+  get 'emotions/index'
+   resources :customers do
     resources :trajects
     resources :blacklisted_customers
     resources :emotions
     resources :orders
     resources :faces
   end
+
+
 
 end
