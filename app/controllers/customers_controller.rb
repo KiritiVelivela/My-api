@@ -23,14 +23,14 @@ class CustomersController < ApplicationController
 
   def four
     #Weekly
-    cust = Customer.all.where('created_at BETWEEN ? AND ? ', 1.week.ago.beginning_of_week , 1.week.ago.end_of_week)
+   # cust = Customer.all.where('created_at BETWEEN ? AND ? ', 1.week.ago.beginning_of_week , 1.week.ago.end_of_week)
     #Daily
     #cust = Customer.all.where('created_at >= ?', Time.zone.now.beginning_of_day)
     #Montly
     #cust = Customer.all.where('created_at BETWEEN ? AND ? ', 1.month.ago.beginning_of_month , 1.month.ago.end_of_month)
 
     # Recently Visited Customers
-   # cust = Customer.all.order('position_changed DESC').limit('4')
+    cust = Customer.all.order('position_changed DESC').limit('4')
     json_response(cust)
   end
 
