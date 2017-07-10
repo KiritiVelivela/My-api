@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170702164954) do
+ActiveRecord::Schema.define(version: 20170704183921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,19 +42,33 @@ ActiveRecord::Schema.define(version: 20170702164954) do
     t.datetime "position_changed"
     t.boolean "blacklist"
     t.bigint "blacklisted_customer_id"
-    t.bigint "emotions_id"
+    t.string "emotions"
+    t.integer "change"
     t.index ["blacklisted_customer_id"], name: "index_customers_on_blacklisted_customer_id"
-    t.index ["emotions_id"], name: "index_customers_on_emotions_id"
     t.index ["traject_id"], name: "index_customers_on_traject_id"
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "emotions", force: :cascade do |t|
     t.string "emotion"
     t.datetime "frame"
-    t.bigint "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customer_id"], name: "index_emotions_on_customer_id"
+    t.integer "customer_id"
   end
 
   create_table "faces", force: :cascade do |t|
@@ -65,6 +79,14 @@ ActiveRecord::Schema.define(version: 20170702164954) do
     t.bigint "camera_id"
     t.index ["camera_id"], name: "index_faces_on_camera_id"
     t.index ["customer_id"], name: "index_faces_on_customer_id"
+  end
+
+  create_table "heatmaps", force: :cascade do |t|
+    t.date "start_date"
+    t.date "end_date"
+    t.string "map"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -111,9 +133,7 @@ ActiveRecord::Schema.define(version: 20170702164954) do
 
   add_foreign_key "blacklisted_customers", "customers"
   add_foreign_key "customers", "blacklisted_customers"
-  add_foreign_key "customers", "emotions", column: "emotions_id"
   add_foreign_key "customers", "trajects"
-  add_foreign_key "emotions", "customers"
   add_foreign_key "faces", "cameras"
   add_foreign_key "faces", "customers"
   add_foreign_key "orders", "customers"

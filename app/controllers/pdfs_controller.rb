@@ -23,12 +23,12 @@ class PdfsController < ApplicationController
       text "number of happy customers ="+"#{h}"
       text "number of sad customers ="+"#{s}"
       text "number of neutral customers ="+"#{n}"
-      render_file File.join(Rails.root, "public/uploads/allpdfs", "emotions_Daily_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf")
+      render_file File.join(Rails.root, "public/uploads/allpdfs/Daily", "emotions_Daily_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf")
 
     end
 
     u = Pdf.new
-    File.open("public/uploads/allpdfs/emotions_Daily_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf") do |f|
+    File.open("public/uploads/allpdfs/Daily/emotions_Daily_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf") do |f|
       u.attachment = f
       u.name = "emotions_Daily_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf"
     end
@@ -53,12 +53,12 @@ class PdfsController < ApplicationController
       text "number of happy customers ="+"#{h}"
       text "number of sad customers ="+"#{s}"
       text "number of neutral customers ="+"#{n}"
-      render_file File.join(Rails.root, "public/uploads/allpdfs", "emotions_Montly_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf")
+      render_file File.join(Rails.root, "public/uploads/allpdfs/Montly", "emotions_Montly_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf")
 
     end
 
     u = Pdf.new
-    File.open("public/uploads/allpdfs/emotions_Montly_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf") do |f|
+    File.open("public/uploads/allpdfs/Monthly/emotions_Montly_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf") do |f|
       u.attachment = f
       u.name = "emotions_Montly_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf"
     end
@@ -83,12 +83,12 @@ class PdfsController < ApplicationController
       text "number of happy customers ="+"#{h}"
       text "number of sad customers ="+"#{s}"
       text "number of neutral customers ="+"#{n}"
-      render_file File.join(Rails.root, "public/uploads/allpdfs", "emotions_Weekly_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf")
+      render_file File.join(Rails.root, "public/uploads/allpdfs/weekly", "emotions_Weekly_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf")
 
     end
 
     u = Pdf.new
-    File.open("public/uploads/allpdfs/emotions_Weekly_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf") do |f|
+    File.open("public/uploads/allpdfs/Weekly/emotions_Weekly_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf") do |f|
       u.attachment = f
       u.name = "emotions_Weekly_#{Time.now.strftime('%y-%m-%d_%H-%M-%S')}.pdf"
     end

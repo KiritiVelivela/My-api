@@ -3,7 +3,7 @@ class Customer < ApplicationRecord
 
   has_many :trajects, dependent: :destroy
   has_many :blacklisted_customers, dependent: :destroy
-  has_many :emotions, dependent: :destroy
+ # has_many :emotions, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :faces, dependent: :destroy
 
@@ -11,8 +11,10 @@ class Customer < ApplicationRecord
 
 
   def avatar_url
-    "http://10.0.2.2:3000"+"#{avatar.url}"
+    "http://192.168.0.2:3000"+"#{avatar.url}"
   end
+
+
 
 
 end
