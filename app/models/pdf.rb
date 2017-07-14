@@ -4,7 +4,7 @@ class Pdf < ApplicationRecord
 
 
   def url
-    "http://192.168.43.147:3000"+"#{attachment.url}"
+    "http://192.41.170.159:3000"+"#{attachment.url}"
   end
 
 
